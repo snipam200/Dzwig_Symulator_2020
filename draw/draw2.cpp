@@ -12,19 +12,19 @@ const int rozmiarHaka = 4;
 const int czas = 25;
 const int czas2 = 25;
 const int multipliAnim = 4;
-int liczbaObiektow;
 
+int liczbaObiektow;
 int trybAnim;
+int szukanyTyp;
+int liczbaPowtorzen;
+bool czyMoznaDzialac;
+
 int szukanaX;
 int szukanaY;
 int docelowaX;
 int docelowaY;
 int tymczasowaX;
 int tymczasowaY;
-int szukanyTyp;
-
-int liczbaPowtorzen;
-bool czyMoznaDzialac;
 
 struct pozycja
 {
@@ -581,12 +581,12 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
 			if ((czyMoznaDzialac)&&(!hak.czyZaczepiony)) {
 				czyMoznaDzialac = false;
 				szukanyTyp = 1;
-				for (int i = lokXMax; i > 0; i--) {
+				for (int i = lokXMax; i >= 0; i--) {
 					if (!lokacje[i][lokYMax]->czyZajeta) {
 						docelowaX = i;
 					}
 				}
-				for (int i = lokXMax; i > 0; i--) {
+				for (int i = lokXMax; i >= 0; i--) {
 					if ((!lokacje[i][lokYMax]->czyZajeta)&&(docelowaX!=i)) {
 						tymczasowaX = i;
 					}
@@ -881,7 +881,7 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
 					if (liczbaPowtorzen == 0) {
 						szukanaY = 0;
 						trybAnim = 1;
-						for (int i = lokXMax; i > 0; i--) {
+						for (int i = lokXMax; i >= 0; i--) {
 							if ((!lokacje[i][lokYMax]->czyZajeta) && (docelowaX != i)) {
 								tymczasowaX = i;
 							}
